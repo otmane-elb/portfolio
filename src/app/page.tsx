@@ -17,7 +17,7 @@ export default function Home() {
         transition={{ duration: 0.6 }}
         className="space-y-6"
       >
-        <h2 className="text-xl font-semibold">Hi, I'm Otmane 👋</h2>
+        <h2 className="text-xl font-semibold">Hi, I&apos;m Otmane 👋</h2>
         <p className="text-gray-400">
           I'm a Flutter Developer with a passion for mobile experiences, UI design and scalable architecture. I work with Flutter, Firebase, and modern tooling to ship high-quality apps.
         </p>
