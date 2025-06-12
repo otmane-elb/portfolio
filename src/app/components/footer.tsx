@@ -2,7 +2,7 @@
 export default function Footer() {
   return (
     <footer className="space-y-6 border-t border-gray-800 pt-12">
-      <h3 className="text-lg font-semibold">Let's Connect</h3>
+      <h3 className="text-lg font-semibold">Let&apos;s Connect</h3>
       <p className="text-gray-400 max-w-lg leading-relaxed">
         If you want to get in touch with me about something or just to say hi, reach out on social media or send me an email.
       </p>
