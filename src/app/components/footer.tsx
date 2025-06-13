@@ -1,4 +1,5 @@
 'use client';
+
 export default function Footer() {
   return (
     <footer className="space-y-6 border-t border-gray-800 pt-12">
@@ -19,6 +20,28 @@ export default function Footer() {
         </a>
         <a href="mailto:otmane.elbaghzaoui@gmail.com" aria-label="Email" className="hover:text-gray-300">
           <i className="fa-solid fa-envelope"></i>
+        </a>
+
+        {/* Download CV - English */}
+        <a
+          href="/files/cv-en.pdf"
+          download
+          aria-label="Download CV in English"
+          title="Download CV in English"
+          className="hover:text-gray-300"
+        >
+          <i className="fa-solid fa-file-arrow-down"></i>
+        </a>
+
+        {/* Download CV - French */}
+        <a
+          href="/files/cv-fr.pdf"
+          download
+          aria-label="Download CV in French"
+          title="Download CV in French"
+          className="hover:text-gray-300"
+        >
+          <i className="fa-solid fa-file-arrow-down"></i>
         </a>
       </div>
 
