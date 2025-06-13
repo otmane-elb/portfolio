@@ -28,7 +28,7 @@ export default function RendezVousPage() {
       >
         <video
           controls
-          playsInline
+          playsInline autoPlay muted
           className="w-full h-full object-cover"
         >
           <source src="/videos/rendezvousvid.mp4" type="video/mp4" />

@@ -47,7 +47,7 @@ export default function ProjectsPage() {
                         </Link>
                     </li>
                     <li className="border border-gray-700 rounded-lg p-4 hover:bg-white/5 transition">
-                        <Link href="/projects/bureau-dordre">
+                        <Link href="/projects/bod">
                             <div className="font-semibold">Bureau d’Ordre</div>
                             <div className="text-sm text-gray-400">
                                 Application for managing incoming/outgoing correspondence with document traceability.
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
                         </Link>
                     </li>
                     <li className="border border-gray-700 rounded-lg p-4 hover:bg-white/5 transition">
-                        <Link href="/projects/chikaya">
+                        <Link href="/projects/topela">
                             <div className="font-semibold">Topela</div>
                             <div className="text-sm text-gray-400">
                                 Application that simplifies the relationship between professionals and clients. With intuitive interfaces, both pros and clients can share useful information throughout their business relationship.
