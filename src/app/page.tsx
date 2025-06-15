@@ -18,7 +18,7 @@ export default function Home() {
         className="space-y-6"
       >
         <h2 className="text-xl font-semibold">Hi, I&apos;m Otmane 👋</h2>
-        <p className="text-gray-400">
+        <p className="text-gray-400 italic">
           I&apos;m a Flutter Developer with a passion for mobile experiences, UI design and scalable architecture. I work with Flutter, Firebase, and modern tooling to ship high-quality apps.
         </p>
       </motion.section>
