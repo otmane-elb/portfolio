@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { Analytics } from "@vercel/analytics/next"
-
+import { Analytics } from "@vercel/analytics/next";
+import Tracking from "./components/Tracking"; // 👈 we’ll create this in Step 2
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,18 +19,16 @@ export const metadata = {
   description: 'Personal portfolio website built with Next.js',
 };
 
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Analytics />
+        <Tracking /> {}
         {children}
       </body>
     </html>
