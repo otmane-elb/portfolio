@@ -38,7 +38,7 @@ export default function Home() {
         <div className="space-y-10 text-gray-300 text-sm">
           {/* Intelcia IT Solutions */}
           <div>
-            <p className="text-xs text-gray-400">📅 11/2024 – Present · 📍 Hybrid</p>
+            <p className="text-xs text-gray-400">📅 11/2024 – 05/2025 · 📍 Hybrid</p>
             <h4 className="font-semibold text-white">Flutter Developer Freelance</h4>
             <p className="text-blue-400 font-medium">Intelcia IT Solutions</p>
             <div className="mt-2">

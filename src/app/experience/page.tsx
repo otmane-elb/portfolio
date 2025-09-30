@@ -21,7 +21,7 @@ export default function ExperiencePage() {
 
                     {/* Intelcia */}
                     <div>
-                        <p className="text-xs text-gray-400">📅 11/2024 – Present · 📍 Hybrid</p>
+                        <p className="text-xs text-gray-400">📅 11/2024 – 05/2025 · 📍 Hybrid</p>
                         <h2 className="font-semibold text-white">Flutter Developer Freelance</h2>
                         <p className="text-blue-400 font-medium">Intelcia IT Solutions</p>
                         <div className="mt-2">
