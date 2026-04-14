@@ -1,81 +1,95 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
+import Card from '../components/Card';
+import Badge from '../components/Badge';
 
 export default function ProjectsPage() {
-    return (
-        <div className="bg-neutral-950 text-white px-6 sm:px-12 lg:px-32 py-12 max-w-3xl mx-auto space-y-24">
+  const FADE_UP_ANIMATION_VARIANTS = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { type: "spring" } },
+  };
 
-            <Navbar />
+  const projects = [
+    {
+      id: 'eparapheur',
+      name: 'Eparapheur',
+      description: 'Mobile companion to the E-Parapheur platform, enabling full digitization of mail processing within public administrations.',
+      tags: ['Government', 'Digitization']
+    },
+    {
+      id: 'rendezvous',
+      name: 'Rendez-vous',
+      description: 'Appointment scheduling application with advanced calendar management features and automated routing algorithms.',
+      tags: ['Scheduling', 'Calendar API']
+    },
+    {
+      id: 'chikaya',
+      name: 'Chikaya',
+      description: 'National application for submitting and tracking citizen complaints with absolute transparency and structured workflows.',
+      tags: ['Civil Tech', 'Forms']
+    },
+    {
+      id: 'bod',
+      name: 'Bureau d’Ordre',
+      description: 'Application for managing incoming/outgoing correspondence with strict document traceability and auditing.',
+      tags: ['Traceability', 'Data Flow']
+    },
+    {
+      id: 'eliteconect',
+      name: 'Elite Connect',
+      description: 'Dynamic recruitment platform connecting athletes, clubs, coaches, and agents through a professional networking interface.',
+      tags: ['Social Network', 'Sports']
+    },
+    {
+      id: 'topela',
+      name: 'Topela',
+      description: 'Intuitive business relationship hub that simplifies communication and information sharing between professionals and clients.',
+      tags: ['B2B', 'SaaS Client']
+    }
+  ];
 
-            {/* Projects Section */}
-            <motion.section
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-            >
-                <h1 className="text-2xl font-bold">All Projects</h1>
+  return (
+    <motion.div
+      initial="hidden"
+      animate="show"
+      viewport={{ once: true }}
+      variants={{
+        hidden: {},
+        show: { transition: { staggerChildren: 0.1 } },
+      }}
+      className="space-y-16"
+    >
+      <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="space-y-4">
+        <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">All Projects</h1>
+        <p className="text-neutral-400 text-lg">A deep dive into the applications and architectures I've built.</p>
+      </motion.div>
 
-                <ul className="space-y-4">
-                    <li className="border border-gray-700 rounded-lg p-4 hover:bg-white/5 transition">
-                        <Link href="/projects/eparapheur">
-                            <div className="font-semibold">Eparapheur</div>
-                            <div className="text-sm text-gray-400">
-                                Mobile companion to the E-Parapheur platform, enabling full digitization of mail processing within public administrations.
-                            </div>
-                        </Link>
-                    </li>
-
-                    <li className="border border-gray-700 rounded-lg p-4 hover:bg-white/5 transition">
-                        <Link href="/projects/rendezvous">
-                            <div className="font-semibold">Rendez-vous</div>
-                            <div className="text-sm text-gray-400">
-                                Appointment scheduling application with calendar management features.
-                            </div>
-                        </Link>
-                    </li>
-
-                    <li className="border border-gray-700 rounded-lg p-4 hover:bg-white/5 transition">
-                        <Link href="/projects/chikaya">
-                            <div className="font-semibold">Chikaya</div>
-                            <div className="text-sm text-gray-400">
-                                Application for submitting and tracking complaints.
-                            </div>
-                        </Link>
-                    </li>
-                    <li className="border border-gray-700 rounded-lg p-4 hover:bg-white/5 transition">
-                        <Link href="/projects/bod">
-                            <div className="font-semibold">Bureau d’Ordre</div>
-                            <div className="text-sm text-gray-400">
-                                Application for managing incoming/outgoing correspondence with document traceability.
-                            </div>
-                        </Link>
-                    </li>
-                    <li className="border border-gray-700 rounded-lg p-4 hover:bg-white/5 transition">
-                        <Link href="/projects/eliteconect">
-                            <div className="font-semibold">Elite Conect</div>
-                            <div className="text-sm text-gray-400">
-                                Application designed to connect athletes, clubs, coaches, and agents. It streamlines recruitment in the sports industry by allowing users to showcase profiles, achievements, and connect through a professional networking interface.
-                            </div>
-                        </Link>
-                    </li>
-                    <li className="border border-gray-700 rounded-lg p-4 hover:bg-white/5 transition">
-                        <Link href="/projects/topela">
-                            <div className="font-semibold">Topela</div>
-                            <div className="text-sm text-gray-400">
-                                Application that simplifies the relationship between professionals and clients. With intuitive interfaces, both pros and clients can share useful information throughout their business relationship.
-                            </div>
-                        </Link>
-                    </li>
-
-
-                </ul>
-            </motion.section>
-
-            <Footer />
-        </div>
-    );
+      <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+        {projects.map((project) => (
+          <Link key={project.id} href={`/projects/${project.id}`} className="group outline-none block h-full">
+            <Card className="h-full flex flex-col group-focus-visible:ring-2 ring-accent">
+              <div className="flex-1 space-y-4">
+                <h2 className="text-xl font-bold text-white group-hover:text-accent transition-colors">{project.name}</h2>
+                <p className="text-neutral-400 leading-relaxed text-sm">
+                  {project.description}
+                </p>
+              </div>
+              
+              <div className="pt-6 mt-auto space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <Badge key={tag}>{tag}</Badge>
+                  ))}
+                </div>
+                <div className="text-accent text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                  View Case Study <span aria-hidden="true">&rarr;</span>
+                </div>
+              </div>
+            </Card>
+          </Link>
+        ))}
+      </motion.div>
+    </motion.div>
+  );
 }

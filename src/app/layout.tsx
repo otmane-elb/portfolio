@@ -14,6 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+import Spotlight from "./components/Spotlight";
+
 export const metadata = {
   title: 'Otmane El Baghazaoui | Portfolio',
   description: 'Personal portfolio website built with Next.js',
@@ -25,11 +29,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Analytics />
-        <Tracking />
-        {children}
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-accent/30 selection:text-white bg-neutral-950`}>
+        <div className="relative min-h-screen overflow-x-hidden glow-mesh">
+          <Analytics />
+          <Tracking />
+          <Spotlight />
+
+          <Navbar />
+
+          <main className="mx-auto max-w-5xl px-6 lg:px-8 relative z-10">
+            {children}
+          </main>
+
+          <Footer />
+        </div>
       </body>
     </html>
   );
