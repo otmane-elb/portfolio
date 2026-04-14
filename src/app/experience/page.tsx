@@ -16,8 +16,23 @@ export default function ExperiencePage() {
             >
                 <h1 className="text-2xl font-bold text-white">Full Work Experience</h1>
                 <div className="space-y-12 text-sm text-gray-300">
-                    {/* experience entries here */}
-
+                    {/* Netopia */}
+                    <div>
+                        <p className="text-xs text-gray-400">📅 10/2025 – Present · 📍 Hybrid</p>
+                        <h2 className="font-semibold text-white">Flutter Developer Freelance</h2>
+                        <p className="text-blue-400 font-medium">Netopia</p>
+                        <div className="mt-2">
+                            <p className="font-semibold">“Passeport Maroc” Application (Government Project)</p>
+                            <ul className="list-disc list-inside space-y-1 mt-1">
+                                <li>Development of a secure government mobile application enabling full digitalization of the passport issuance process.</li>
+                                <li>Integration of secure government APIs for identity verification and application tracking.</li>
+                                <li>Integration of the official DGSN SDK for secure scanning and reading of Moroccan identity documents (National ID card & Passport), including protected data extraction and validation.</li>
+                                <li>Implementation of banking-grade security mechanisms: SSL Pinning, encryption, root/emulator detection, anti-debug protection, secure network configuration.</li>
+                                <li>Worked directly with the Ministry of Interior Security Team to remediate vulnerabilities identified during an official APK static security audit (cleartext traffic elimination, signature verification, log sanitization, release hardening).</li>
+                                <li>Close collaboration with DGSN, Dar As-Sikkah, and backend teams to ensure compliance, integrity, and system reliability.</li>
+                            </ul>
+                        </div>
+                    </div>
 
                     {/* Intelcia */}
                     <div>
