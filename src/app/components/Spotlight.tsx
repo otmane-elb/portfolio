@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { motion, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useSpring, useMotionValue, useTransform, type MotionStyle } from 'framer-motion';
 
 export default function Spotlight() {
   const [mounted, setMounted] = useState(false);
@@ -9,6 +9,9 @@ export default function Spotlight() {
 
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  
+  const x = useTransform(springX, (val) => `${val}px`);
+  const y = useTransform(springY, (val) => `${val}px`);
 
   useEffect(() => {
     setMounted(true);
@@ -30,9 +33,9 @@ export default function Spotlight() {
       <motion.div
         className="absolute inset-0 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(94,106,210,0.08),transparent_80%)]"
         style={{
-          '--x': `${springX}px`,
-          '--y': `${springY}px`,
-        } as any}
+          '--x': x,
+          '--y': y,
+        } as MotionStyle}
       />
     </motion.div>
   );
