@@ -8,7 +8,7 @@ export default function Home() {
   const FADE_UP_ANIMATION_VARIANTS = {
     hidden: { opacity: 0, y: 10 },
     show: { opacity: 1, y: 0, transition: { type: "spring" } },
-  };
+  } as const;
 
   return (
     <motion.div
@@ -43,7 +43,7 @@ export default function Home() {
       <motion.section variants={FADE_UP_ANIMATION_VARIANTS} className="space-y-8">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold tracking-tight text-neutral-100">Selected Experience</h2>
-          <Link href="/experience" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors underline decoration-neutral-700 underline-offset-4 hover:decoration-white">View Full Résumé</Link>
+          <Link href="/experience" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors underline decoration-neutral-700 underline-offset-4 hover:decoration-white">View Full R&eacute;sum&eacute;</Link>
         </div>
 
         <div className="grid gap-6">
@@ -55,7 +55,7 @@ export default function Home() {
                 <p className="text-accent font-medium text-sm mt-1">Netopia</p>
               </div>
               <p className="text-neutral-300 leading-relaxed">
-                Engineered the secure <strong>“Passeport Maroc”</strong> government mobile application. Integrated the official DGSN SDK for protected facial/ID scanning and implemented banking-grade security mechanisms (SSL Pinning, root detection, encryption). Collaborated with the Ministry of Interior to harden releases against static security audits.
+                Engineered the secure <strong>&ldquo;Passeport Maroc&rdquo;</strong> government mobile application. Integrated the official DGSN SDK for protected facial/ID scanning and implemented banking-grade security mechanisms (SSL Pinning, root detection, encryption). Collaborated with the Ministry of Interior to harden releases against static security audits.
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 <Badge>Flutter</Badge>

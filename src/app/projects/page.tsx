@@ -8,7 +8,7 @@ export default function ProjectsPage() {
   const FADE_UP_ANIMATION_VARIANTS = {
     hidden: { opacity: 0, y: 10 },
     show: { opacity: 1, y: 0, transition: { type: "spring" } },
-  };
+  } as const;
 
   const projects = [
     {
@@ -62,7 +62,7 @@ export default function ProjectsPage() {
     >
       <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="space-y-4">
         <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">All Projects</h1>
-        <p className="text-neutral-400 text-lg">A deep dive into the applications and architectures I've built.</p>
+        <p className="text-neutral-400 text-lg">A deep dive into the applications and architectures I&apos;ve built.</p>
       </motion.div>
 
       <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">

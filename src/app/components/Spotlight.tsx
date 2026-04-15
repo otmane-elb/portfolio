@@ -30,11 +30,9 @@ export default function Spotlight() {
       <motion.div
         className="absolute inset-0 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(94,106,210,0.08),transparent_80%)]"
         style={{
-          // @ts-ignore
           '--x': `${springX}px`,
-          // @ts-ignore
           '--y': `${springY}px`,
-        }}
+        } as any}
       />
     </motion.div>
   );
