@@ -15,9 +15,12 @@ export async function POST(req: NextRequest) {
     // Get visitor IP
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'Unknown';
 
+    console.log(`[Track] Visit from ${ip} to ${url}`);
+
     // Rate limit: skip if same IP visited recently
     const lastVisit = recentVisits.get(ip);
     if (lastVisit && Date.now() - lastVisit < COOLDOWN_MS) {
+      console.log(`[Track] Skipped (rate limited)`);
       return NextResponse.json({ ok: true, skipped: true });
     }
     recentVisits.set(ip, Date.now());
@@ -30,9 +33,11 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    await resend.emails.send({
+    console.log(`[Track] Sending email via Resend... (API key present: ${!!process.env.RESEND_API_KEY})`);
+
+    const result = await resend.emails.send({
       from: 'Portfolio Tracker <onboarding@resend.dev>',
-      to: 'otmaneelbaghazaoui@gmail.com',
+      to: 'otmane.elbaghzaoui@gmail.com',
       subject: '🚀 Portfolio Visit',
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 500px; margin: 0 auto; padding: 24px; background: #0a0a0a; border-radius: 12px; border: 1px solid #262626;">
@@ -70,9 +75,10 @@ export async function POST(req: NextRequest) {
       `,
     });
 
+    console.log(`[Track] Email sent successfully:`, result);
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error('Tracking email error:', error);
-    return NextResponse.json({ ok: false }, { status: 500 });
+    console.error('[Track] Email error:', error);
+    return NextResponse.json({ ok: false, error: String(error) }, { status: 500 });
   }
 }
