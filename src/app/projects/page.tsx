@@ -12,6 +12,12 @@ export default function ProjectsPage() {
 
   const projects = [
     {
+      id: 'passeport',
+      name: 'Passeport Maroc',
+      description: 'Official government mobile application for Moroccan passport requests — featuring NFC identity scanning, CMI payments, and banking-grade security.',
+      tags: ['Government', 'Security', 'NFC']
+    },
+    {
       id: 'eparapheur',
       name: 'Eparapheur',
       description: 'Mobile companion to the E-Parapheur platform, enabling full digitization of mail processing within public administrations.',

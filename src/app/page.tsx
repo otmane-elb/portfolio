@@ -100,6 +100,22 @@ export default function Home() {
         </div>
 
         <div className="grid sm:grid-cols-2 gap-6">
+          <Link href="/projects/passeport" className="group outline-none">
+            <Card hoverScale={true} className="h-full flex flex-col group-focus-visible:ring-2 ring-accent">
+              <div className="flex-1 space-y-3">
+                <h3 className="text-lg font-semibold text-white group-hover:text-accent transition-colors">Passeport Maroc</h3>
+                <p className="text-neutral-400 leading-relaxed text-sm">
+                  Official government app for passport requests — NFC identity scanning, CMI payments, and banking-grade security.
+                </p>
+              </div>
+              <div className="pt-6 mt-auto">
+                <span className="text-accent text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Read Case Study <span aria-hidden="true">&rarr;</span>
+                </span>
+              </div>
+            </Card>
+          </Link>
+
           <Link href="/projects/eparapheur" className="group outline-none">
             <Card hoverScale={true} className="h-full flex flex-col group-focus-visible:ring-2 ring-accent">
               <div className="flex-1 space-y-3">

@@ -14,7 +14,8 @@
     "framer-motion": "^12.38.0",
     "next": "16.2.3",
     "react": "^19.2.1",
-    "react-dom": "^19.2.1"
+    "react-dom": "^19.2.1",
+    "resend": "^6.16.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
