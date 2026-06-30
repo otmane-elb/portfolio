@@ -17,6 +17,10 @@ export default function Tracking() {
         timestamp: new Date().toISOString(),
         userAgent: navigator.userAgent,
         referrer: document.referrer || null,
+        screenWidth: window.screen.width,
+        screenHeight: window.screen.height,
+        language: navigator.language,
+        platform: navigator.platform,
       }),
     }).catch((error) =>
       console.warn('Tracking fetch failed (likely blocked by extension):', error?.message)
