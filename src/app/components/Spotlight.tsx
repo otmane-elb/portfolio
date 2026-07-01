@@ -31,7 +31,7 @@ export default function Spotlight() {
       className="pointer-events-none fixed inset-0 z-[-1] overflow-hidden"
     >
       <motion.div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(94,106,210,0.08),transparent_80%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(29,78,216,0.05),transparent_80%)]"
         style={{
           '--x': x,
           '--y': y,

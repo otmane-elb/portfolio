@@ -96,7 +96,7 @@ export default function ExperiencePage() {
               <span className="h-2 w-2 rounded-full bg-accent"></span>
             </span>
 
-            <Card hoverScale={false} className="group">
+            <Card className="group">
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                 <div>
                   <h2 className="text-lg font-bold text-white group-hover:text-accent transition-colors">{exp.role}</h2>

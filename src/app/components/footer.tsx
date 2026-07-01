@@ -24,14 +24,33 @@ export default function Footer() {
           <i className="fa-solid fa-envelope text-2xl"></i>
         </a>
         
-        <div className="w-px h-6 bg-white/10 mx-2"></div>
-        
-        <a href="/files/cv-en.pdf" download aria-label="Download CV in English" title="Download CV in English" className="text-neutral-500 transition-colors hover:text-white p-2 text-sm font-medium hover:bg-white/5 rounded-md flex items-center gap-2">
-          <i className="fa-solid fa-file-pdf"></i> EN
-        </a>
-        <a href="/files/cv-fr.pdf" download aria-label="Download CV in French" title="Download CV in French" className="text-neutral-500 transition-colors hover:text-white p-2 text-sm font-medium hover:bg-white/5 rounded-md flex items-center gap-2">
-          <i className="fa-solid fa-file-pdf"></i> FR
-        </a>
+      </div>
+
+      {/* CV Download Section */}
+      <div className="w-full max-w-md mx-auto space-y-3">
+        <p className="text-xs font-semibold uppercase tracking-wider text-neutral-500 text-center">Download my CV</p>
+        <div className="flex items-center justify-center gap-4">
+          <a
+            href="/files/cv-en.pdf"
+            download
+            aria-label="Download CV in English"
+            title="Download CV in English"
+            className="group inline-flex items-center gap-2.5 rounded-xl border border-blue-600/20 bg-blue-600/5 px-5 py-3 text-sm font-semibold text-blue-700 transition-all duration-300 hover:bg-blue-600/10 hover:border-blue-600/40 hover:shadow-[0_0_20px_rgba(29,78,216,0.10)] hover:scale-105 active:scale-95"
+          >
+            <i className="fa-solid fa-download text-base group-hover:animate-bounce"></i>
+            CV — English
+          </a>
+          <a
+            href="/files/cv-fr.pdf"
+            download
+            aria-label="Download CV in French"
+            title="Download CV in French"
+            className="group inline-flex items-center gap-2.5 rounded-xl border border-blue-600/20 bg-blue-600/5 px-5 py-3 text-sm font-semibold text-blue-700 transition-all duration-300 hover:bg-blue-600/10 hover:border-blue-600/40 hover:shadow-[0_0_20px_rgba(29,78,216,0.10)] hover:scale-105 active:scale-95"
+          >
+            <i className="fa-solid fa-download text-base group-hover:animate-bounce"></i>
+            CV — Français
+          </a>
+        </div>
       </div>
 
       <div className="w-full flex flex-col items-center justify-center text-xs text-neutral-500 pt-8 border-t border-white/5 gap-4">
