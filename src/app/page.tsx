@@ -276,22 +276,22 @@ export default function Home() {
 
       {/* Projects 3D Coverflow Carousel Section - Rendered FIRST */}
       <motion.section variants={FADE_UP_ANIMATION_VARIANTS} className="space-y-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-100">Featured Projects</h2>
             <p className="text-xs text-neutral-400 font-medium">Auto-rotating coverflow carousel. Click side cards to focus</p>
           </div>
-          <Link href="/projects" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors underline decoration-neutral-700 underline-offset-4 hover:decoration-white">All Projects</Link>
+          <Link href="/projects" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors underline decoration-neutral-700 underline-offset-4 hover:decoration-white whitespace-nowrap self-start sm:self-auto">All Projects</Link>
         </div>
 
         {/* 3D Stack Track Container */}
         <div className="relative flex flex-col items-center w-full select-none py-4">
-
+          
           {/* Main absolute stack area */}
-          <div className="flex items-center justify-center w-full overflow-visible min-h-[400px] relative px-4">
+          <div className="flex items-center justify-center w-full overflow-visible min-h-[510px] md:min-h-[420px] relative px-4">
 
             {/* Absolute Stacking Track */}
-            <div className="relative w-full max-w-5xl h-[360px] md:h-[400px] flex items-center justify-center overflow-visible">
+            <div className="relative w-full max-w-5xl h-[470px] md:h-[380px] flex items-center justify-center overflow-visible">
               {PROJECTS_DATA.map((project, idx) => {
                 const d = getRelativeIndex(idx);
                 const isActive = d === 0;
