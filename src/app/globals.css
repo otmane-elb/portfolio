@@ -206,16 +206,41 @@ li span.bg-accent {
 }
 
 /* Typing animation classes */
-@keyframes typing {
+@keyframes typing-mobile {
+  0%, 10% { width: 0; }
+  45%, 55% { width: 6ch; }
+  90%, 100% { width: 0; }
+}
+@keyframes typing-desktop {
   0%, 10% { width: 0; }
   45%, 55% { width: 19ch; }
   90%, 100% { width: 0; }
 }
-.animate-typing {
+
+/* Mobile default display settings */
+.animate-typing-mobile {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   vertical-align: bottom;
   width: 0;
-  animation: typing 8s steps(19, end) infinite;
+  animation: typing-mobile 6s steps(6, end) infinite;
+}
+.animate-typing-desktop {
+  display: none;
+}
+
+/* Desktop screen size override overrides */
+@media (min-width: 640px) {
+  .animate-typing-mobile {
+    display: none;
+  }
+  .animate-typing-desktop {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+    width: 0;
+    animation: typing-desktop 8s steps(19, end) infinite;
+  }
 }
