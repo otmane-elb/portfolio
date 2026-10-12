@@ -217,12 +217,22 @@ function buildEmailHtml(data: EmailPayload): string {
 
   const tzIpNote = ipTimezone && ipTimezone !== clientTimezone ? `<br/>(IP TZ: ${ipTimezone})` : '';
 
+  const path = extractPath(url);
+  const isRightFrame = path.startsWith('/rightframe');
+  const headerTitle = isRightFrame ? '🛡️ RightFrame Privacy Policy Visit' : '🚀 Portfolio Visit';
+  const headerSubtitle = isRightFrame
+    ? 'Live visitor interaction report for RightFrame Privacy Policy'
+    : 'Live visitor interaction report';
+  const footerText = isRightFrame
+    ? 'Sent automatically from your RightFrame privacy policy tracking system'
+    : 'Sent automatically from your portfolio tracking system';
+
   return `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; padding: 24px; background: #0a0a0a; border-radius: 16px; border: 1px solid #222; color: #ffffff;">
       <!-- Header -->
       <div style="margin-bottom: 24px;">
-        <h2 style="color: #ffffff; margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.5px;">🚀 Portfolio Visit</h2>
-        <p style="color: #666; margin: 2px 0 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">Live visitor interaction report</p>
+        <h2 style="color: #ffffff; margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.5px;">${headerTitle}</h2>
+        <p style="color: #666; margin: 2px 0 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">${headerSubtitle}</p>
       </div>
 
       <!-- Section 1: Engagement Metrics -->
@@ -343,7 +353,7 @@ function buildEmailHtml(data: EmailPayload): string {
         </div>
       </div>
 
-      <p style="color: #444; font-size: 10px; margin: 20px 0 0 0; text-align: center;">Sent automatically from your portfolio tracking system</p>
+      <p style="color: #444; font-size: 10px; margin: 20px 0 0 0; text-align: center;">${footerText}</p>
     </div>
   `;
 }
@@ -409,10 +419,18 @@ export async function POST(req: NextRequest) {
       mapsLink,
     });
 
+    const isRightFrameVisit = path.startsWith('/rightframe');
+    const subjectPrefix = isRightFrameVisit
+      ? '🛡️ RightFrame Privacy Policy Visit'
+      : '🚀 Portfolio Visit';
+    const emailSender = isRightFrameVisit
+      ? 'RightFrame Tracker <onboarding@resend.dev>'
+      : 'Portfolio Tracker <onboarding@resend.dev>';
+
     const result = await resend.emails.send({
-      from: 'Portfolio Tracker <onboarding@resend.dev>',
+      from: emailSender,
       to: 'otmane.elbaghzaoui@gmail.com',
-      subject: `🚀 Portfolio Visit — ${device} on ${path} from ${country || 'Unknown'}`,
+      subject: `${subjectPrefix} — ${device} on ${path} from ${country || 'Unknown'}`,
       html: emailHtml,
     });
 

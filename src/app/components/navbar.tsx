@@ -6,6 +6,10 @@ import { useEffect, useState } from 'react';
 
 export default function Navbar() {
   const pathname = usePathname();
+  if (pathname?.startsWith('/rightframe')) {
+    return null;
+  }
+
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);

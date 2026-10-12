@@ -1,7 +1,13 @@
 'use client';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith('/rightframe')) {
+    return null;
+  }
+
   const socials = [
     { href: 'https://github.com/otmane-elb', icon: 'fa-brands fa-github', label: 'GitHub' },
     { href: 'https://x.com/elbaghazaoui', icon: 'fa-brands fa-x-twitter', label: 'X (Twitter)' },
