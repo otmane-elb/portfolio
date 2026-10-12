@@ -73,9 +73,14 @@ export default function ProjectsPage() {
       }}
       className="space-y-16"
     >
-      <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="space-y-4">
-        <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">All Projects</h1>
-        <p className="text-neutral-400 text-lg">A deep dive into the applications and architectures I&apos;ve built.</p>
+      <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="space-y-3 pt-4">
+        <span className="section-label" style={{ color: '#c4b5fd' }}>Portfolio</span>
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white" style={{ fontFamily: 'Space Grotesk' }}>
+          All <span className="text-gradient">Projects</span>
+        </h1>
+        <p className="text-base sm:text-lg max-w-xl" style={{ color: '#b8acd6' }}>
+          A deep dive into the secure mobile applications and production architectures I&apos;ve built.
+        </p>
       </motion.div>
 
       <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
@@ -83,8 +88,10 @@ export default function ProjectsPage() {
           <Link key={project.id} href={`/projects/${project.id}`} className="group outline-none block h-full">
             <Card className="h-full flex flex-col group-focus-visible:ring-2 ring-accent">
               <div className="flex-1 space-y-4">
-                <h2 className="text-xl font-bold text-white group-hover:text-accent transition-colors">{project.name}</h2>
-                <p className="text-neutral-400 leading-relaxed text-sm">
+                <h2 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors" style={{ fontFamily: 'Space Grotesk' }}>
+                  {project.name}
+                </h2>
+                <p className="leading-relaxed text-sm" style={{ color: '#b8acd6' }}>
                   {project.description}
                 </p>
               </div>
@@ -95,12 +102,21 @@ export default function ProjectsPage() {
                     <Badge key={tag}>{tag}</Badge>
                   ))}
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-accent text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                    View Case Study <span aria-hidden="true">&rarr;</span>
+                <div className="flex items-center justify-between pt-2" style={{ borderTop: '1px solid rgba(157,111,255,0.1)' }}>
+                  <div className="text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: '#c4b5fd' }}>
+                    <span>View Case Study</span>
+                    <span aria-hidden="true">&rarr;</span>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-700/80 bg-blue-600/5 border border-blue-600/15 rounded-full px-2.5 py-1">
-                    <i className="fa-solid fa-images text-[10px]"></i> {project.imageCount} screenshots
+                  <span
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full"
+                    style={{
+                      background: 'rgba(157,111,255,0.12)',
+                      color: '#c4b5fd',
+                      border: '1px solid rgba(157,111,255,0.25)',
+                    }}
+                  >
+                    <i className="fa-solid fa-images text-[10px]" />
+                    <span>{project.imageCount} screenshots</span>
                   </span>
                 </div>
               </div>

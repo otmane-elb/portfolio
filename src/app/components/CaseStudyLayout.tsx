@@ -27,133 +27,212 @@ export default function CaseStudyLayout({
   contributions,
   videoSrc,
   images = [],
-}: CaseStudyLayoutProps) {
-  const FADE_UP_VARIANTS = {
+}: Readonly<CaseStudyLayoutProps>) {
+  const FADE_UP = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: 'spring' } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
   } as const;
+
+  const STAGGER = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.12 } },
+  };
 
   return (
     <motion.div
       initial="hidden"
       animate="show"
-      viewport={{ once: true }}
-      variants={{
-        hidden: {},
-        show: { transition: { staggerChildren: 0.1 } },
-      }}
-      className="space-y-24 pb-24"
+      variants={STAGGER}
+      className="space-y-20 pb-24"
     >
-      {/* Hero */}
-      <motion.section variants={FADE_UP_VARIANTS} className="space-y-6 pt-12 text-center">
-        <Link 
-          href="/projects" 
-          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-white transition-colors mb-4"
+      {/* Back link + Hero */}
+      <motion.section variants={FADE_UP} className="space-y-6 pt-8 text-center">
+        <Link
+          href="/projects"
+          id="case-study-back-link"
+          className="inline-flex items-center gap-2 text-sm font-medium transition-colors mb-4"
+          style={{ color: '#5a4d7a' }}
         >
-          <span aria-hidden="true">&larr;</span> Back to Projects
+          <span aria-hidden="true">←</span> Back to Projects
         </Link>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white">
+
+        <h1
+          className="text-4xl sm:text-5xl font-bold"
+          style={{ fontFamily: 'Space Grotesk', color: '#f0ecff' }}
+        >
           {title}
         </h1>
-        <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+
+        <p className="text-lg max-w-2xl mx-auto" style={{ color: '#6b5d9a' }}>
           {subtitle}
         </p>
-        <div className="flex flex-wrap justify-center gap-2 pt-4">
+
+        <div className="flex flex-wrap justify-center gap-2 pt-2">
           {stack.map((item) => (
             <Badge key={item}>{item}</Badge>
           ))}
         </div>
       </motion.section>
 
-      {/* Metadata Grid */}
-      <motion.section variants={FADE_UP_VARIANTS} className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-white/5">
-        <div className="space-y-1">
-          <p className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Role</p>
-          <p className="text-sm text-neutral-200">{role}</p>
-        </div>
-        <div className="space-y-1">
-          <p className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Timeline</p>
-          <p className="text-sm text-neutral-200">{timeline}</p>
-        </div>
-        <div className="space-y-1 col-span-2">
-          <p className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Technologies</p>
-          <p className="text-sm text-neutral-200">{stack.join(', ')}</p>
+      {/* Metadata strip */}
+      <motion.section variants={FADE_UP}>
+        <div
+          className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden"
+          style={{
+            background: 'rgba(139,92,246,0.1)',
+            border: '1px solid rgba(139,92,246,0.12)',
+          }}
+        >
+          {[
+            { label: 'Role', value: role },
+            { label: 'Timeline', value: timeline },
+            { label: 'Stack', value: stack.slice(0, 3).join(', ') },
+            { label: 'Technologies', value: stack.length + ' tools used' },
+          ].map(({ label, value }) => (
+            <div
+              key={label}
+              className="px-6 py-8 space-y-1"
+              style={{ background: 'rgba(7,6,15,0.95)' }}
+            >
+              <p className="section-label">{label}</p>
+              <p className="text-sm font-medium" style={{ color: '#c4b5fd' }}>{value}</p>
+            </div>
+          ))}
         </div>
       </motion.section>
 
-      {/* Content Section */}
-      <div className="grid lg:grid-cols-2 gap-16">
-        <motion.section variants={FADE_UP_VARIANTS} className="space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold text-white">The Challenge</h2>
-            <p className="text-neutral-400 leading-relaxed">
+      {/* Challenge + Solution */}
+      <div className="grid lg:grid-cols-2 gap-12">
+        <motion.section variants={FADE_UP} className="space-y-10">
+          <div
+            className="rounded-2xl p-6 space-y-4"
+            style={{
+              background: 'rgba(13,11,26,0.8)',
+              border: '1px solid rgba(139,92,246,0.1)',
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🎯</span>
+              <h2 className="text-xl font-semibold" style={{ color: '#f0ecff', fontFamily: 'Space Grotesk' }}>
+                The Challenge
+              </h2>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: '#6b5d9a' }}>
               {challenge}
             </p>
           </div>
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold text-white">The Solution</h2>
-            <p className="text-neutral-400 leading-relaxed">
+
+          <div
+            className="rounded-2xl p-6 space-y-4"
+            style={{
+              background: 'rgba(13,11,26,0.8)',
+              border: '1px solid rgba(139,92,246,0.1)',
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-xl">⚡</span>
+              <h2 className="text-xl font-semibold" style={{ color: '#f0ecff', fontFamily: 'Space Grotesk' }}>
+                The Solution
+              </h2>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: '#6b5d9a' }}>
               {solution}
             </p>
           </div>
         </motion.section>
 
-        <motion.section variants={FADE_UP_VARIANTS} className="space-y-4">
-          <h2 className="text-2xl font-semibold text-white">Key Contributions</h2>
-          <ul className="space-y-4">
-            {contributions.map((contribution, index) => (
-              <li key={index} className="flex items-start gap-3 text-neutral-400 text-sm">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                <span className="leading-relaxed">{contribution}</span>
-              </li>
-            ))}
-          </ul>
+        <motion.section variants={FADE_UP}>
+          <div
+            className="rounded-2xl p-6 space-y-5 h-full"
+            style={{
+              background: 'rgba(13,11,26,0.8)',
+              border: '1px solid rgba(139,92,246,0.1)',
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-xl">✨</span>
+              <h2 className="text-xl font-semibold" style={{ color: '#f0ecff', fontFamily: 'Space Grotesk' }}>
+                Key Contributions
+              </h2>
+            </div>
+            <ul className="space-y-3">
+              {contributions.map((c) => (
+                <li key={c} className="flex items-start gap-3 text-sm" style={{ color: '#b8acd6' }}>
+                  <span
+                    className="mt-2 shrink-0 rounded-full"
+                    style={{
+                      width: '5px', height: '5px', minWidth: '5px',
+                      background: '#8b5cf6',
+                      boxShadow: '0 0 6px rgba(139,92,246,0.8)',
+                    }}
+                  />
+                  <span className="leading-relaxed">{c}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </motion.section>
       </div>
 
       {/* Video Demo */}
       {videoSrc && (
-        <motion.section variants={FADE_UP_VARIANTS} className="space-y-8">
+        <motion.section variants={FADE_UP} className="space-y-8">
           <div className="text-center space-y-2">
-            <h2 className="text-2xl font-semibold text-white">Direct Execution</h2>
-            <p className="text-neutral-500 text-sm">Product demo & walkthough</p>
+            <span className="section-label">Demo</span>
+            <h2 className="text-2xl font-semibold" style={{ color: '#f0ecff', fontFamily: 'Space Grotesk' }}>
+              Product Walkthrough
+            </h2>
           </div>
-          <div className="max-w-[400px] mx-auto aspect-[9/19.5] rounded-[3rem] overflow-hidden border-[12px] border-neutral-900 shadow-2xl bg-neutral-900 p-1">
-             <div className="w-full h-full rounded-[2.25rem] overflow-hidden bg-black">
-               <video
-                 controls
-                 playsInline
-                 autoPlay
-                 muted
-                 loop
-                 className="w-full h-full object-cover"
-               >
-                 <source src={videoSrc} type="video/mp4" />
-                 Your browser does not support the video tag.
-               </video>
-             </div>
+          <div
+            className="max-w-[380px] mx-auto aspect-[9/19.5] rounded-[3rem] overflow-hidden p-1"
+            style={{
+              border: '10px solid #0d0b1a',
+              boxShadow: '0 0 60px rgba(139,92,246,0.2), 0 20px 60px rgba(0,0,0,0.6)',
+              background: '#0d0b1a',
+            }}
+          >
+            <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-black">
+              <video controls playsInline autoPlay muted loop className="w-full h-full object-cover">
+                <source src={videoSrc} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </motion.section>
       )}
 
       {/* Gallery */}
       {images.length > 0 && (
-        <motion.section variants={FADE_UP_VARIANTS} className="space-y-12">
+        <motion.section variants={FADE_UP} className="space-y-10">
           <div className="text-center space-y-2">
-            <h2 className="text-2xl font-semibold text-white">Interface Exploration</h2>
-            <p className="text-neutral-500 text-sm">Visual deep dive</p>
+            <span className="section-label">Gallery</span>
+            <h2 className="text-2xl font-semibold" style={{ color: '#f0ecff', fontFamily: 'Space Grotesk' }}>
+              Interface Exploration
+            </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {images.map((image, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {images.map((image) => (
               <motion.div
-                key={index}
-                whileHover={{ scale: 1.02 }}
-                className="group relative aspect-auto overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+                key={image.src}
+                whileHover={{ scale: 1.025, y: -4 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="group relative aspect-auto overflow-hidden rounded-2xl"
+                style={{
+                  border: '1px solid rgba(139,92,246,0.12)',
+                  background: 'rgba(13,11,26,0.5)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.4)',
+                }}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80"
+                  className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-85"
+                />
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: 'linear-gradient(to top, rgba(139,92,246,0.15) 0%, transparent 50%)',
+                  }}
                 />
               </motion.div>
             ))}
