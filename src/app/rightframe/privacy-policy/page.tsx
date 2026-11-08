@@ -37,7 +37,7 @@ export default function RightFramePrivacyPolicy() {
         <p className="font-semibold text-white uppercase tracking-wider text-xs text-violet-400">Developer & Publisher Identity</p>
         <div className="space-y-1.5 text-slate-300">
           <div><strong className="text-slate-200">Developer:</strong> Otmane El Baghazaoui (Independent Individual Developer)</div>
-          <div><strong className="text-slate-200">Privacy Contact Email:</strong> <a href="mailto:otmane.elbaghazaoui@gmail.com" className="text-violet-400 hover:text-violet-300 underline underline-offset-4">otmane.elbaghazaoui@gmail.com</a></div>
+          <div><strong className="text-slate-200">Privacy Contact Email:</strong> <a href="mailto:otmane.elbaghzaoui@gmail.com" className="text-violet-400 hover:text-violet-300 underline underline-offset-4">otmane.elbaghzaoui@gmail.com</a></div>
           <div><strong className="text-slate-200">Country of Operation / Jurisdiction:</strong> Morocco</div>
           <div><strong className="text-slate-200">Target Public Policy URL:</strong> <a href="https://otmaneportfolio.vercel.app/rightframe/privacy-policy" className="text-violet-400 hover:text-violet-300 underline underline-offset-4 font-mono text-xs">https://otmaneportfolio.vercel.app/rightframe/privacy-policy</a></div>
         </div>
@@ -359,10 +359,10 @@ export default function RightFramePrivacyPolicy() {
             <div>
               <strong className="text-slate-300">Email:</strong>{' '}
               <a
-                href="mailto:otmane.elbaghazaoui@gmail.com"
+                href="mailto:otmane.elbaghzaoui@gmail.com"
                 className="text-violet-400 hover:text-violet-300 underline underline-offset-4 font-mono text-sm"
               >
-                otmane.elbaghazaoui@gmail.com
+                otmane.elbaghzaoui@gmail.com
               </a>
             </div>
             <div>

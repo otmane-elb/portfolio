@@ -12,7 +12,7 @@ export default function Footer() {
     { href: 'https://github.com/otmane-elb', icon: 'fa-brands fa-github', label: 'GitHub' },
     { href: 'https://x.com/elbaghazaoui', icon: 'fa-brands fa-x-twitter', label: 'X (Twitter)' },
     { href: 'https://www.linkedin.com/in/otmane-el-baghazaoui/', icon: 'fa-brands fa-linkedin', label: 'LinkedIn' },
-    { href: 'mailto:otmane.elbaghazaoui@gmail.com', icon: 'fa-solid fa-envelope', label: 'Email' },
+    { href: 'mailto:otmane.elbaghzaoui@gmail.com', icon: 'fa-solid fa-envelope', label: 'Email' },
   ];
 
   return (
