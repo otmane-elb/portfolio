@@ -42,7 +42,7 @@
   --color-ok: var(--ok);
   --font-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-serif: var(--font-serif), Georgia, serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
 }
 
 /* ============================
@@ -56,7 +56,7 @@ html {
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-sans);
+  font-family: var(--font-geist), system-ui, sans-serif;
   letter-spacing: -0.011em;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -111,7 +111,7 @@ h1, h2, h3, h4 {
   @media (min-width: 640px) { .container-page { padding-inline: 2rem; } }
 
   .eyebrow {
-    font-family: var(--font-mono);
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
     font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -120,7 +120,7 @@ h1, h2, h3, h4 {
   }
 
   .serif-italic {
-    font-family: var(--font-serif);
+    font-family: var(--font-instrument), Georgia, serif;
     font-style: italic;
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -149,7 +149,7 @@ h1, h2, h3, h4 {
     align-items: center;
     padding: 0.2rem 0.6rem;
     border-radius: 999px;
-    font-family: var(--font-mono);
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
     font-size: 0.68rem;
     letter-spacing: 0.02em;
     color: var(--fg-2);

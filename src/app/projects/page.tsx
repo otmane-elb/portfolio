@@ -1,129 +1,77 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Card from '../components/Card';
-import Badge from '../components/Badge';
+import { PROJECTS } from '../lib/data';
+import { EASE, SectionLabel, SplitText } from '../components/Motion';
 
 export default function ProjectsPage() {
-  const FADE_UP_ANIMATION_VARIANTS = {
-    hidden: { opacity: 0, y: 10 },
-    show: { opacity: 1, y: 0, transition: { type: "spring" } },
-  } as const;
-
-  const projects = [
-    {
-      id: 'passeport',
-      name: 'Passeport Maroc',
-      description: 'Official government mobile application for Moroccan passport requests — featuring NFC identity scanning, CMI payments, and banking-grade security.',
-      tags: ['Government', 'Security', 'NFC'],
-      imageCount: 15,
-    },
-    {
-      id: 'eparapheur',
-      name: 'Eparapheur',
-      description: 'Mobile companion to the E-Parapheur platform, enabling full digitization of mail processing within public administrations.',
-      tags: ['Government', 'Digitization'],
-      imageCount: 6,
-    },
-    {
-      id: 'rendezvous',
-      name: 'Rendez-vous',
-      description: 'Appointment scheduling application with advanced calendar management features and automated routing algorithms.',
-      tags: ['Scheduling', 'Calendar API'],
-      imageCount: 7,
-    },
-    {
-      id: 'chikaya',
-      name: 'Chikaya',
-      description: 'National application for submitting and tracking citizen complaints with absolute transparency and structured workflows.',
-      tags: ['Civil Tech', 'Forms'],
-      imageCount: 8,
-    },
-    {
-      id: 'bod',
-      name: 'Bureau d’Ordre',
-      description: 'Application for managing incoming/outgoing correspondence with strict document traceability and auditing.',
-      tags: ['Traceability', 'Data Flow'],
-      imageCount: 9,
-    },
-    {
-      id: 'eliteconect',
-      name: 'Elite Connect',
-      description: 'Dynamic recruitment platform connecting athletes, clubs, coaches, and agents through a professional networking interface.',
-      tags: ['Social Network', 'Sports'],
-      imageCount: 17,
-    },
-    {
-      id: 'topela',
-      name: 'Topela',
-      description: 'Intuitive business relationship hub that simplifies communication and information sharing between professionals and clients.',
-      tags: ['B2B', 'SaaS Client'],
-      imageCount: 21,
-    }
-  ];
-
   return (
-    <motion.div
-      initial="hidden"
-      animate="show"
-      viewport={{ once: true }}
-      variants={{
-        hidden: {},
-        show: { transition: { staggerChildren: 0.1 } },
-      }}
-      className="space-y-16"
-    >
-      <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="space-y-3 pt-4">
-        <span className="section-label" style={{ color: '#c4b5fd' }}>Portfolio</span>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white" style={{ fontFamily: 'Space Grotesk' }}>
-          All <span className="text-gradient">Projects</span>
+    <div className="space-y-16 pt-10 sm:pt-16">
+      <header className="space-y-6">
+        <SectionLabel index={String(PROJECTS.length).padStart(2, '0')}>Projects</SectionLabel>
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl tracking-[-0.05em] leading-[0.95]">
+          <SplitText text="Selected" />{' '}
+          <SplitText text="work." className="serif-italic text-accent" delay={0.1} />
         </h1>
-        <p className="text-base sm:text-lg max-w-xl" style={{ color: '#b8acd6' }}>
-          A deep dive into the secure mobile applications and production architectures I&apos;ve built.
-        </p>
-      </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.7, ease: EASE }}
+          className="max-w-xl text-lg text-fg-2"
+        >
+          Government platforms, startups and B2B products. Secure Flutter apps built for production.
+        </motion.p>
+      </header>
 
-      <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-        {projects.map((project) => (
-          <Link key={project.id} href={`/projects/${project.id}`} className="group outline-none block h-full">
-            <Card className="h-full flex flex-col group-focus-visible:ring-2 ring-accent">
-              <div className="flex-1 space-y-4">
-                <h2 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors" style={{ fontFamily: 'Space Grotesk' }}>
-                  {project.name}
-                </h2>
-                <p className="leading-relaxed text-sm" style={{ color: '#b8acd6' }}>
-                  {project.description}
-                </p>
+      <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2">
+        {PROJECTS.map((p, i) => (
+          <motion.div
+            key={p.id}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.8, delay: (i % 2) * 0.1, ease: EASE }}
+            className={i % 2 === 1 ? 'sm:mt-24' : ''}
+          >
+            <Link href={`/projects/${p.id}`} className="group block">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-surface">
+                <div
+                  aria-hidden
+                  className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+                  style={{ background: 'radial-gradient(70% 70% at 50% 100%, rgba(226,96,59,0.25), transparent 70%)' }}
+                />
+                <img
+                  src={p.image}
+                  alt={`${p.title} screenshot`}
+                  loading="lazy"
+                  className="absolute left-1/2 top-[12%] w-[38%] -translate-x-1/2 rounded-[1.1rem] border-[4px] border-surface-2 shadow-[0_30px_50px_-20px_rgba(0,0,0,0.9)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-3 group-hover:scale-[1.04]"
+                />
+                <span className="absolute left-5 top-5 font-mono text-xs text-fg-3">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-fg text-bg transition-all duration-500 group-hover:bg-accent group-hover:rotate-45">
+                  <i className="fa-solid fa-arrow-up text-xs rotate-45" />
+                </span>
               </div>
-              
-              <div className="pt-6 mt-auto space-y-4">
-                <div className="flex flex-wrap items-center gap-2">
-                  {project.tags.map(tag => (
-                    <Badge key={tag}>{tag}</Badge>
-                  ))}
+              <div className="mt-5 flex items-start justify-between gap-4">
+                <div>
+                  <h2 className="text-2xl sm:text-3xl tracking-[-0.035em] transition-colors group-hover:text-accent">
+                    {p.title}
+                  </h2>
+                  <p className="mt-1 text-sm text-fg-3">{p.client}</p>
                 </div>
-                <div className="flex items-center justify-between pt-2" style={{ borderTop: '1px solid rgba(157,111,255,0.1)' }}>
-                  <div className="text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: '#c4b5fd' }}>
-                    <span>View Case Study</span>
-                    <span aria-hidden="true">&rarr;</span>
-                  </div>
-                  <span
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full"
-                    style={{
-                      background: 'rgba(157,111,255,0.12)',
-                      color: '#c4b5fd',
-                      border: '1px solid rgba(157,111,255,0.25)',
-                    }}
-                  >
-                    <i className="fa-solid fa-images text-[10px]" />
-                    <span>{project.imageCount} screenshots</span>
-                  </span>
-                </div>
+                <span className="font-mono text-xs text-fg-3 pt-2">{p.year}</span>
               </div>
-            </Card>
-          </Link>
+              <p className="mt-3 text-fg-2 leading-relaxed">{p.description}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
+              </div>
+            </Link>
+          </motion.div>
         ))}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

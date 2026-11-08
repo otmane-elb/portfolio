@@ -3,201 +3,121 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { EMAIL } from '../lib/data';
+
+const LINKS = [
+  { name: 'Work', href: '/projects' },
+  { name: 'Experience', href: '/experience' },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
-  if (pathname?.startsWith('/rightframe')) {
-    return null;
-  }
-
-  const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    handleResize();
-    handleScroll();
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = [
-    { name: 'Work', href: '/projects' },
-    { name: 'Experience', href: '/experience' },
-  ];
+  useEffect(() => setMenuOpen(false), [pathname]);
 
-  let username = 'otmane elbaghazaoui';
-  let typingClass = 'animate-typing-desktop';
-  if (mounted && isMobile) {
-    username = 'otmane';
-    typingClass = 'animate-typing-mobile';
-  }
+  if (pathname?.startsWith('/rightframe')) return null;
 
   return (
-    <header className="sticky top-4 z-50 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+    <header className="sticky top-0 z-50">
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="relative"
+        initial={{ y: -40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className={`transition-[background-color,border-color,backdrop-filter] duration-500 border-b ${
+          scrolled || menuOpen ? 'bg-bg/80 backdrop-blur-xl border-line' : 'bg-transparent border-transparent'
+        }`}
       >
-        <div
-          className="flex items-center justify-between px-4 sm:px-6 py-3.5 rounded-2xl transition-all duration-500"
-          style={{
-            background: scrolled
-              ? 'rgba(7, 6, 15, 0.85)'
-              : 'rgba(13, 11, 26, 0.6)',
-            backdropFilter: 'blur(24px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-            border: scrolled
-              ? '1px solid rgba(139, 92, 246, 0.2)'
-              : '1px solid rgba(255,255,255,0.05)',
-            boxShadow: scrolled
-              ? '0 4px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,92,246,0.1)'
-              : '0 4px 20px rgba(0,0,0,0.3)',
-          }}
-        >
-          {/* Logo */}
-          <Link
-            href="/"
-            className="group flex items-center gap-2 font-mono shrink-0 w-[110px] sm:w-[270px] overflow-hidden whitespace-nowrap"
-          >
-            <div
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold shrink-0 transition-all duration-300 group-hover:scale-110"
-              style={{
-                background: 'linear-gradient(135deg, rgba(139,92,246,0.2), rgba(124,58,237,0.3))',
-                border: '1px solid rgba(139,92,246,0.4)',
-                color: '#a78bfa',
-                boxShadow: '0 0 12px rgba(139,92,246,0.2)',
-              }}
-            >
-              &lt;/&gt;
-            </div>
-            <span className="text-xs sm:text-sm font-bold tracking-tight transition-colors group-hover:text-purple-400 flex items-center whitespace-nowrap" style={{ color: '#f0ecff' }}>
-              <span>~/</span><span className={typingClass} style={{ color: '#a78bfa' }}>{username}</span><span className="animate-cursor-blink" style={{ color: '#ec4899' }}>_</span>
+        <div className="container-page flex h-16 items-center justify-between">
+          <Link href="/" className="group flex items-center gap-3" aria-label="Home">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line-strong font-mono text-[11px] text-fg transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-bg">
+              OE
+            </span>
+            <span className="hidden sm:block text-sm font-medium text-fg">
+              Otmane El Baghazaoui
             </span>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden sm:flex items-center gap-1">
-            {links.map((link) => {
-              const isActive = pathname?.startsWith(link.href);
+            {LINKS.map((link) => {
+              const active = pathname?.startsWith(link.href);
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 hover:text-white"
-                  style={{
-                    color: isActive ? '#a78bfa' : '#b8acd6',
-                    background: isActive ? 'rgba(157,111,255,0.15)' : 'transparent',
-                  }}
+                  className={`relative px-4 py-2 text-sm transition-colors ${active ? 'text-fg' : 'text-fg-2 hover:text-fg'}`}
                 >
                   {link.name}
-                  {isActive && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute inset-0 rounded-xl"
-                      style={{
-                        border: '1px solid rgba(139,92,246,0.3)',
-                        background: 'rgba(139,92,246,0.08)',
-                      }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.2 }}
+                  {active && (
+                    <motion.span
+                      layoutId="nav-dot"
+                      className="absolute left-1/2 -bottom-0.5 h-1 w-1 -translate-x-1/2 rounded-full bg-accent"
                     />
                   )}
                 </Link>
               );
             })}
-            <Link
-              href="mailto:otmane.elbaghzaoui@gmail.com"
-              className="ml-3 px-4 py-2 text-sm font-semibold rounded-xl transition-all duration-300"
-              style={{
-                background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
-                color: '#fff',
-                border: '1px solid rgba(139,92,246,0.4)',
-                boxShadow: '0 0 16px rgba(139,92,246,0.25)',
-              }}
-            >
-              Hire Me
-            </Link>
+            <a href={`mailto:${EMAIL}`} className="btn btn-primary ml-3 !py-2 !px-4 text-sm">
+              Hire me
+            </a>
           </nav>
 
-          {/* Mobile menu button */}
           <button
-            className="sm:hidden flex flex-col gap-1.5 p-2 rounded-lg transition-colors"
-            style={{ color: '#a78bfa' }}
-            onClick={() => setMenuOpen(!menuOpen)}
+            className="sm:hidden relative h-9 w-9 rounded-full border border-line-strong"
+            onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
           >
             <motion.span
-              animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }}
-              className="block h-0.5 w-5 rounded-full"
-              style={{ background: '#a78bfa' }}
+              animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 0 : -3 }}
+              className="absolute left-1/2 top-1/2 -ml-2 h-px w-4 bg-fg"
             />
             <motion.span
-              animate={{ opacity: menuOpen ? 0 : 1 }}
-              className="block h-0.5 w-5 rounded-full"
-              style={{ background: '#a78bfa' }}
-            />
-            <motion.span
-              animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }}
-              className="block h-0.5 w-5 rounded-full"
-              style={{ background: '#a78bfa' }}
+              animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? 0 : 3 }}
+              className="absolute left-1/2 top-1/2 -ml-2 h-px w-4 bg-fg"
             />
           </button>
         </div>
 
-        {/* Mobile dropdown */}
         <AnimatePresence>
           {menuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.97 }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="absolute top-full left-0 right-0 mt-2 rounded-2xl p-3 flex flex-col gap-1"
-              style={{
-                background: 'rgba(7, 6, 15, 0.95)',
-                backdropFilter: 'blur(24px)',
-                border: '1px solid rgba(139,92,246,0.2)',
-                boxShadow: '0 8px 40px rgba(0,0,0,0.6)',
-              }}
+            <motion.nav
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="sm:hidden overflow-hidden"
             >
-              {links.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="px-4 py-3 text-sm font-medium rounded-xl transition-all"
-                  style={{
-                    color: pathname?.startsWith(link.href) ? '#a78bfa' : '#7c6aad',
-                    background: pathname?.startsWith(link.href) ? 'rgba(139,92,246,0.1)' : 'transparent',
-                  }}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <Link
-                href="mailto:otmane.elbaghzaoui@gmail.com"
-                onClick={() => setMenuOpen(false)}
-                className="mt-1 px-4 py-3 text-sm font-semibold rounded-xl text-center"
-                style={{
-                  background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
-                  color: '#fff',
-                }}
-              >
-                Hire Me
-              </Link>
-            </motion.div>
+              <div className="container-page flex flex-col pb-6 pt-2">
+                {[{ name: 'Home', href: '/' }, ...LINKS].map((link, i) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * 0.05 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className="flex items-center justify-between border-b border-line py-4 text-2xl tracking-tight text-fg"
+                    >
+                      {link.name}
+                      <i className="fa-solid fa-arrow-right text-sm text-fg-3" />
+                    </Link>
+                  </motion.div>
+                ))}
+                <a href={`mailto:${EMAIL}`} className="btn btn-accent mt-6 justify-center">
+                  Hire me
+                </a>
+              </div>
+            </motion.nav>
           )}
         </AnimatePresence>
       </motion.div>
