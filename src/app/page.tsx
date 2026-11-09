@@ -231,7 +231,7 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.8, ease: EASE }}
               className="mt-10 max-w-xl text-lg leading-relaxed text-fg-2"
             >
-              I&apos;m Otmane, a Flutter developer with 4+ years of experience. I shipped{' '}
+              I&apos;m Otmane, a Flutter developer with 5+ years of experience. I shipped{' '}
               <span className="text-fg">Passeport Maroc</span> for the Ministry of Interior and four other
               government apps used by citizens across the country.
             </motion.p>
@@ -310,7 +310,7 @@ export default function Home() {
         <Reveal>
           <div className="hairline-grid grid-cols-2 lg:grid-cols-4">
             {[
-              { value: 4, suffix: '+', label: 'Years building with Flutter' },
+              { value: 5, suffix: '+', label: 'Years building with Flutter' },
               { value: 7, suffix: '+', label: 'Apps shipped to production' },
               { value: 5, suffix: '', label: 'Government apps delivered' },
               { value: 3, suffix: '', label: 'Languages: AR · FR · EN' },

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://otmaneportfolio.vercel.app'),
   title: 'Otmane El Baghazaoui | Flutter Developer · Morocco',
   description:
-    'Flutter developer based in Morocco with 4+ years building secure mobile apps, including government apps like Passeport Maroc. Available for freelance, CDI and remote roles.',
+    'Flutter developer based in Morocco with 5+ years building secure mobile apps, including government apps like Passeport Maroc. Available for freelance, CDI and remote roles.',
   keywords: 'Flutter Developer Maroc, Développeur Flutter, Mobile Developer Morocco, Casablanca, Rabat, Government Apps, Dart, Mobile Security',
   openGraph: {
     title: 'Otmane El Baghazaoui | Flutter Developer · Morocco',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`relative ${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
       <body suppressHydrationWarning className="antialiased bg-bg text-fg">
         <Analytics />
         <Tracking />

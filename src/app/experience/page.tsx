@@ -12,7 +12,7 @@ export default function ExperiencePage() {
   return (
     <div className="space-y-16 pt-10 sm:pt-16">
       <header className="space-y-6">
-        <SectionLabel index="4+">Years of experience</SectionLabel>
+        <SectionLabel index="5+">Years of experience</SectionLabel>
         <h1 className="text-5xl sm:text-7xl lg:text-8xl tracking-[-0.05em] leading-[0.95]">
           <SplitText text="Experience" />{' '}
           <SplitText text="so far." className="serif-italic text-accent" delay={0.1} />
@@ -49,9 +49,8 @@ export default function ExperiencePage() {
           <Reveal key={`${e.company}-${e.period}`} y={24}>
             <article className="relative grid gap-4 pb-16 pl-8 md:grid-cols-4 md:gap-12 md:pl-0">
               <span
-                className={`absolute left-0 top-1.5 h-[11px] w-[11px] rounded-full border-2 border-bg md:left-[calc(25%-6px)] ${
-                  e.current ? 'bg-ok' : 'bg-accent'
-                }`}
+                className={`absolute left-0 top-1.5 h-[11px] w-[11px] rounded-full border-2 border-bg md:left-[calc(25%-6px)] ${e.current ? 'bg-ok' : 'bg-accent'
+                  }`}
               />
               <div className="md:pr-10 md:text-right">
                 <p className="font-mono text-xs text-fg-2">{e.period}</p>
