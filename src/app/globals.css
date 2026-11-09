@@ -2,25 +2,25 @@
 
 /* ============================
    DESIGN TOKENS
-   Warm charcoal + bone + terracotta
+   Space cadet + slate + off-white + red
    ============================ */
 :root {
-  --bg: #0e0e0c;
-  --bg-2: #141412;
-  --surface: #191916;
-  --surface-2: #201f1c;
+  --bg: #2b2d42;
+  --bg-2: #30324a;
+  --surface: #353850;
+  --surface-2: #3e4159;
 
-  --fg: #ece8de;
-  --fg-2: #a9a497;
-  --fg-3: #6e6a61;
+  --fg: #edf2f4;
+  --fg-2: #8d99ae;
+  --fg-3: #6f7a91;
 
-  --line: rgba(236, 232, 222, 0.09);
-  --line-strong: rgba(236, 232, 222, 0.18);
+  --line: rgba(237, 242, 244, 0.09);
+  --line-strong: rgba(237, 242, 244, 0.18);
 
-  --accent: #e2603b;
-  --accent-hover: #ee7a56;
-  --accent-soft: rgba(226, 96, 59, 0.12);
-  --sand: #d4c09d;
+  --accent: #ef233c;
+  --accent-hover: #d90429;
+  --accent-soft: rgba(239, 35, 60, 0.12);
+  --sand: #8d99ae;
   --ok: #6fbf8b;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -77,7 +77,7 @@ body::after {
 
 ::selection {
   background: var(--accent);
-  color: var(--bg);
+  color: var(--fg);
 }
 
 ::-webkit-scrollbar { width: 8px; }
@@ -138,8 +138,8 @@ h1, h2, h3, h4 {
     white-space: nowrap;
   }
   .btn-primary { background: var(--fg); color: var(--bg); }
-  .btn-primary:hover { background: var(--accent); color: var(--bg); }
-  .btn-accent { background: var(--accent); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); color: var(--fg); }
+  .btn-accent { background: var(--accent); color: var(--fg); }
   .btn-accent:hover { background: var(--accent-hover); }
   .btn-outline { border: 1px solid var(--line-strong); color: var(--fg); }
   .btn-outline:hover { border-color: var(--fg); }

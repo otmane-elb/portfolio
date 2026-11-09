@@ -18,7 +18,7 @@ function RotatingBadge() {
           <textPath href="#circle">{text}</textPath>
         </text>
       </svg>
-      <div className="absolute inset-0 m-auto flex h-11 w-11 items-center justify-center rounded-full bg-accent text-bg">
+      <div className="absolute inset-0 m-auto flex h-11 w-11 items-center justify-center rounded-full bg-accent text-fg">
         <i className="fa-solid fa-arrow-down text-sm" />
       </div>
     </div>
@@ -124,7 +124,7 @@ function WorkIndex() {
                   ))}
                 </div>
                 <span className="hidden sm:block font-mono text-xs text-fg-3">{p.year}</span>
-                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-bg">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-fg">
                   <i className="fa-solid fa-arrow-right -rotate-45 text-xs transition-transform duration-300 group-hover:rotate-0" />
                 </span>
               </div>
@@ -269,7 +269,7 @@ export default function Home() {
                 className="absolute inset-0"
                 style={{
                   background:
-                    'radial-gradient(80% 60% at 50% 100%, rgba(226,96,59,0.28), transparent 70%), linear-gradient(180deg, #1c1b18 0%, #141412 100%)',
+                    'radial-gradient(80% 60% at 50% 100%, rgba(239,35,60,0.28), transparent 70%), linear-gradient(180deg, #353850 0%, #2b2d42 100%)',
                 }}
               />
               <motion.img
@@ -376,11 +376,11 @@ export default function Home() {
         </div>
 
         <Reveal>
-          <div className="relative overflow-hidden rounded-[1.5rem] bg-accent p-8 sm:p-12 text-bg">
+          <div className="relative overflow-hidden rounded-[1.5rem] bg-accent p-8 sm:p-12 text-fg">
             <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl">
                 <p className="font-mono text-xs uppercase tracking-[0.08em] opacity-70">Lancer une app au Maroc ?</p>
-                <h3 className="mt-3 text-3xl sm:text-4xl tracking-[-0.04em] text-bg">
+                <h3 className="mt-3 text-3xl sm:text-4xl tracking-[-0.04em] text-fg">
                   Launching a mobile app in Morocco? Let&apos;s talk about it.
                 </h3>
               </div>
@@ -396,7 +396,7 @@ export default function Home() {
                 </a>
                 <a
                   href={`mailto:${EMAIL}?subject=Projet%20mobile%20Flutter`}
-                  className="btn border border-bg/30 text-bg hover:bg-bg/10"
+                  className="btn border border-fg/40 text-fg hover:bg-fg/10"
                 >
                   <i className="fa-regular fa-envelope" />
                   Email

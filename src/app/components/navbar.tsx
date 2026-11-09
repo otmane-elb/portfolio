@@ -38,7 +38,7 @@ export default function Navbar() {
       >
         <div className="container-page flex h-16 items-center justify-between">
           <Link href="/" className="group flex items-center gap-3" aria-label="Home">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line-strong font-mono text-[11px] text-fg transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-bg">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-line-strong font-mono text-[11px] text-fg transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-fg">
               OE
             </span>
             <span className="hidden sm:block text-sm font-medium text-fg">

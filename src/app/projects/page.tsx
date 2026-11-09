@@ -38,7 +38,7 @@ export default function ProjectsPage() {
                 <div
                   aria-hidden
                   className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-                  style={{ background: 'radial-gradient(70% 70% at 50% 100%, rgba(226,96,59,0.25), transparent 70%)' }}
+                  style={{ background: 'radial-gradient(70% 70% at 50% 100%, rgba(239,35,60,0.25), transparent 70%)' }}
                 />
                 <img
                   src={p.image}
@@ -49,7 +49,7 @@ export default function ProjectsPage() {
                 <span className="absolute left-5 top-5 font-mono text-xs text-fg-3">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-fg text-bg transition-all duration-500 group-hover:bg-accent group-hover:rotate-45">
+                <span className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-fg text-bg transition-all duration-500 group-hover:bg-accent group-hover:text-fg group-hover:rotate-45">
                   <i className="fa-solid fa-arrow-up text-xs rotate-45" />
                 </span>
               </div>
